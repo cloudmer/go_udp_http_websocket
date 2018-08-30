@@ -1,0 +1,14 @@
+# mysql 配置项
+mysql:
+  host: 120.24.166.232
+  port: 3306
+  database: ts_mall
+  username: root
+  password: YTdKHY&H*&(JK=J=L-zAF&G
+  maxIdle: 10 #设置空闲时的最大连接数
+
+# runtime 文件夹地址 文件夹不存在 会自动生成 如果没有 配置 runtime 文件夹 就在当前进程目录下创建 runtime 文件夹 可以递归创建文件夹
+runtime_dir: /Users/cloud/wwwroot/golang/src/bnwUdp/runtime/logs
+
+# runtime 文件下 记录的日志文件名
+logger_file_name: logs.log

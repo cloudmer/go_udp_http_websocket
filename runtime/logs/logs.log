@@ -1,0 +1,5 @@
+2018/08/30 17:21:13 [Warning]  sql: unknown driver "mysql" (forgotten import?)
+2018/08/30 17:21:44 [Info]  ffffff
+2018/08/30 17:21:54 [Warning]  Error 1049: Unknown database 'ts_malls'
+2018/08/30 17:22:04 [Warning]  Error 1045: Access denied for user 'roots'@'43.243.12.232' (using password: YES)
+2018/08/30 17:22:11 [Info]  ffffff
