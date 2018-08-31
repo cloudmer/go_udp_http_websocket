@@ -1,13 +1,14 @@
 package main
 
 import (
-	"fmt"
 	_ "bnwUdp/init"
-	"bnwUdp/share"
-	"bnwUdp/library/logger"
+	"runtime"
+	"bnwUdp/server"
 )
 
 func main() {
-	fmt.Println(share.ShareConfig)
-	logger.Info("ffffff")
+	// 开启多核
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	// 启动服务
+	server.StartServer()
 }

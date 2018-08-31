@@ -7,6 +7,12 @@ mysql:
   password: YTdKHY&H*&(JK=J=L-zAF&G
   maxIdle: 10 #设置空闲时的最大连接数
 
+# udp 服务端口号 必填
+udpPort: 10086
+
+# http 端口 不填默认不开启
+httpPort: 10087
+
 # runtime 文件夹地址 文件夹不存在 会自动生成 如果没有 配置 runtime 文件夹 就在当前进程目录下创建 runtime 文件夹 可以递归创建文件夹
 runtime_dir: /Users/cloud/wwwroot/golang/src/bnwUdp/runtime/logs
 

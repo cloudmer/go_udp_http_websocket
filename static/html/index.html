@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud 夜 - WebSSH [golang] </title>
+    <!--Import Google Icon Font-->
+    <link href="/static/materialize/css/icon.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/static/css/xterm.css" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="javascript:void(0)" class="brand-logo"><i style="margin-left: 10px;" class="material-icons">cloud</i>UDP Server 输出详情</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="javascript:void(0)" onclick="location.reload()"><i class="material-icons">refresh</i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="terminal"></div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/materialize/js/materialize.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript" src="/static/js/xterm.js"></script>
+<script type="text/javascript" src="/static/js/attach.min.js"></script>
+<script type="text/javascript" src="/static/js/fit.min.js"></script>
+<script>
+    $(function () {
+        var socket = new WebSocket('ws://127.0.0.1:10087/bnw');
+        socket.onopen = function(evt) {
+            console.log("Connection open ...");
+            socket.send("Hello WebSockets!");
+        };
+        socket.onclose = function(evt) {
+            console.log("Connection closed.");
+        }
+
+        var term = new Terminal();
+        term.open(document.getElementById('terminal'))
+        term.write('Upd logs \x1B[1;3;31mmonitoring Start\x1B[0m  ... \r\n\r\n')
+        term.attach(socket);  // Attach the above socket to `term`
+
+        setInterval(function () {
+            socket.send('pong')
+        }, 10000)
+    })
+</script>

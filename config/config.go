@@ -12,6 +12,10 @@ type Config struct {
 		MaxIdle   int    `yaml:"maxIdle"`
 	}
 
+	UdpPort int `yaml:"udpPort"`
+	HttpPort string `yaml:"httpPort"`
+	WebsocketPort string `yaml:"websocketPort"`
+
 	// 日志文件夹地址
 	RuntimeDir string `yaml:"runtime_dir"`
 
