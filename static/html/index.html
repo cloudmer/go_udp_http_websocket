@@ -33,18 +33,58 @@
 <script type="text/javascript" src="/static/js/xterm.js"></script>
 <script type="text/javascript" src="/static/js/attach.min.js"></script>
 <script type="text/javascript" src="/static/js/fit.min.js"></script>
+<script type="text/javascript" src="/static/js/console.js"></script>
 <script>
+
+
     $(function () {
+        var getSize = function () {
+            // 横向
+            function getCols() {
+                var div = "<div style='display: inline;display: none' id='test_width'>&nbsp;</div>"
+                $('#terminal').append(div);
+                var test_width = $("#test_width").width()
+                $("#test_width").remove()
+                return parseInt(($(window).width() / test_width) / 2.299) + 4
+            }
+
+            // 纵向
+            function getRows() {
+                var div = "<div style='display: none' id='test_height'>&nbsp;</div>"
+                $('#terminal').append(div);
+                var test_height = $("#test_height").height()
+                var nav_height = $("nav").height()
+                var body_height = $(window).height()
+                var size = parseInt(body_height - nav_height) / parseInt(test_height)
+                size = parseInt(size)
+                $("#test_height").remove();
+                console.log(size)
+                return size - 5
+            }
+
+            return {
+                cols: getCols(),
+                rows: getRows()
+            }
+        }
+
         var socket = new WebSocket('ws://127.0.0.1:10087/bnw');
         socket.onopen = function(evt) {
             console.log("Connection open ...");
-            socket.send("Hello WebSockets!");
         };
         socket.onclose = function(evt) {
             console.log("Connection closed.");
         }
 
-        var term = new Terminal();
+        console.log(getSize().cols)
+        console.log(getSize().rows)
+        // alert(getSize().cols)
+        // alert(getSize().rows)
+        var term = new Terminal({
+            cols: getSize().cols - 13,
+            rows: getSize().rows + 6,
+        });
+
         term.open(document.getElementById('terminal'))
         term.write('Upd logs \x1B[1;3;31mmonitoring Start\x1B[0m  ... \r\n\r\n')
         term.attach(socket);  // Attach the above socket to `term`
