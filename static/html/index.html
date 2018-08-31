@@ -68,7 +68,9 @@
             }
         }
 
-        var socket = new WebSocket('ws://127.0.0.1:10087/bnw');
+        var protocol = (location.protocol === "https:") ? "wss://" : "ws://";
+        host = window.location.host;
+        var socket = new WebSocket(protocol+host+'/bnw');
         socket.onopen = function(evt) {
             console.log("Connection open ...");
         };
