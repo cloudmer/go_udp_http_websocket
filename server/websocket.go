@@ -5,7 +5,6 @@ import (
 	"bnwUdp/library/logger"
 	"github.com/gorilla/websocket"
 	"bnwUdp/session"
-	"fmt"
 )
 
 // http 协议 升级为 websocket 协议
@@ -27,7 +26,6 @@ func websocketServer(writer http.ResponseWriter, request *http.Request)  {
 	}
 	// 有新的客户端连接到 ws 服务端 添加到客户端列表
 	session.WsJoin(wsConn)
-	fmt.Println(session.WsList())
 	// 监听客户端消息
 	go websocketOnMessage(wsConn)
 }

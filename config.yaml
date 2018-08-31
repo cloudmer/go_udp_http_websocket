@@ -2,7 +2,7 @@
 mysql:
   host: 120.24.166.232
   port: 3306
-  database: ts_mall
+  database: ts_p4u_test
   username: root
   password: YTdKHY&H*&(JK=J=L-zAF&G
   maxIdle: 10 #设置空闲时的最大连接数

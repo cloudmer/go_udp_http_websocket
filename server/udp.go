@@ -8,6 +8,7 @@ import (
 	"crypto/md5"
 	"fmt"
 	"strconv"
+	"bnwUdp/models"
 )
 
 type changeNewDevice struct {
@@ -92,4 +93,19 @@ func checkSourceMsg(remoteAddr string, byteContents []byte)  {
 	// 准备入库
 	logger.Info(remoteAddr+": "+strContents+ " 数据准备入库")
 	wsBroadcastMsg(remoteAddr+": "+strContents+ " 数据准备入库")
+
+	// 入库操作
+	model := new(models.UdpDeviceChange)
+	model.OldDevice = newDevice.OldDevice
+	model.NewDevice = newDevice.NewDevice
+	err := model.Insert()
+	// 入库失败
+	if err != nil {
+		logger.Debug(remoteAddr+": "+strContents+ " 数据入库失败 "+ err.Error())
+		wsBroadcastMsg(remoteAddr+": "+strContents+ " 数据入库失败 "+ err.Error())
+		return
+	}
+	// 入库成功
+	logger.Debug(remoteAddr+": "+strContents+ " 数据入库成功～")
+	wsBroadcastMsg(remoteAddr+": "+strContents+ " 数据入库成功～")
 }

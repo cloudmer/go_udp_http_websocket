@@ -5,13 +5,11 @@ import (
 	"os"
 	"html/template"
 	"bnwUdp/share"
-	"fmt"
 )
 
 // 启动 http 服务
 func startHttp()  {
 	// 检查是否配置 http 端口号
-	fmt.Println(share.ShareConfig.HttpPort)
 	if share.ShareConfig.HttpPort == "" {
 		return
 	}
