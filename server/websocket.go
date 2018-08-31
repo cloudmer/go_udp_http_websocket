@@ -8,6 +8,7 @@ import (
 	"fmt"
 )
 
+// http 协议 升级为 websocket 协议
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024 * 10,
 	WriteBufferSize: 1024 * 10,
@@ -58,5 +59,12 @@ func wsSendMsg(wsConn *websocket.Conn, contents string)  {
 		session.WsLogout(wsConn)
 		// 关闭连接
 		wsConn.Close()
+	}
+}
+
+// ws 广播消息
+func wsBroadcastMsg(contents string)  {
+	for _, wsConn := range session.WsList() {
+		wsSendMsg(wsConn, contents)
 	}
 }

@@ -13,6 +13,9 @@ udpPort: 10086
 # http 端口 不填默认不开启
 httpPort: 10087
 
+# udp json 解密 key
+key: cH8Fasqi*2ln%GbBrqbLsZFjT7ka8eYL
+
 # runtime 文件夹地址 文件夹不存在 会自动生成 如果没有 配置 runtime 文件夹 就在当前进程目录下创建 runtime 文件夹 可以递归创建文件夹
 runtime_dir: /Users/cloud/wwwroot/golang/src/bnwUdp/runtime/logs
 

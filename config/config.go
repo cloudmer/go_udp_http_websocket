@@ -14,7 +14,8 @@ type Config struct {
 
 	UdpPort int `yaml:"udpPort"`
 	HttpPort string `yaml:"httpPort"`
-	WebsocketPort string `yaml:"websocketPort"`
+
+	Key string `yaml:"key"`
 
 	// 日志文件夹地址
 	RuntimeDir string `yaml:"runtime_dir"`
