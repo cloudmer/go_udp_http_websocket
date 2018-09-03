@@ -13,6 +13,9 @@ udpPort: 10086
 # http 端口 不填默认不开启
 httpPort: 10087
 
+# http 静态文件根目录地址
+staticPath: /Users/cloud/wwwroot/golang/src/bnwUdp/static
+
 # udp json 解密 key
 key: cH8Fasqi*2ln%GbBrqbLsZFjT7ka8eYL
 

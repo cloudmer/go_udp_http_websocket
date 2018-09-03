@@ -12,14 +12,16 @@ type Config struct {
 		MaxIdle   int    `yaml:"maxIdle"`
 	}
 
-	UdpPort int `yaml:"udpPort"`
-	HttpPort string `yaml:"httpPort"`
+	UdpPort 		int `yaml:"udpPort"`
+	HttpPort 		string `yaml:"httpPort"`
+	StaticPath		string `yaml:"staticPath"`
 
-	Key string `yaml:"key"`
+	// udp json 加密key
+	Key 			string `yaml:"key"`
 
 	// 日志文件夹地址
-	RuntimeDir string `yaml:"runtime_dir"`
+	RuntimeDir 		string `yaml:"runtime_dir"`
 
 	// 日志文件名
-	LoggerFileName string `yaml:"logger_file_name"`
+	LoggerFileName 	string `yaml:"logger_file_name"`
 }
